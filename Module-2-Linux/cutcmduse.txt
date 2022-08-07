@@ -1,0 +1,1 @@
+apache2 -version | grep -i version | cut -d '/' -f 2 | cut -d ' ' -f 1

@@ -1,0 +1,10 @@
+#Pattern matching by using -E some useful command
+
+ls -lrth | grep -E "^d"
+ls -lrth | grep -E "^-"
+
+#To search a IP address in file by using -E to patter match
+ip addr | grep -E "\b[0-9]{1,3}\.\b[0-9]{1,3}\.\b[0-9]{1,3}\.\b[0-9]{1,3}\b"
+
+#To Seach a mutiple string in a file we can use -e
+grep -i -e "elif" -e "mkdir" filename

@@ -1,0 +1,1 @@
+docker -v | cut -d ' ' -f 3 | tr -d ','
