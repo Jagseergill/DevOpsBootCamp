@@ -1,0 +1,251 @@
+# clone repository & change into project dir
+git clone git@gitlab.com:devops-bootcamp3/git-project.git
+
+git init
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Jagseergill/Module_3_Git.git
+git push -u origin main
+
+
+
+git status
+git branch
+git branch -a
+git add .
+git commit -m "just adding test.txt"
+git remote
+git push origin
+
+
+
+
+#############################################
+
+Exercise 1: Clone and create new repository 
+ 
+steps:
+
+
+# clone repository & change into project dir
+git clone git@gitlab.com:devops-bootcamp3/git-project.git
+cd git-project
+
+# remove remote repo reference and create your own local repository
+rm -rf .git
+git init
+git add .
+git commit -m "Initial commit"
+
+# create git repository on Gitlab and push your newly created local repository to it
+git remote add origin git@gitlab.com:{gitlab-user}/{gitlab-repo}.git
+git push -u origin master
+
+
+
+
+
+
+Exercise 2: .gitignore 
+ 
+create .gitignore file with following entries
+
+.idea 
+.DS_Store
+out 
+build
+
+
+remove cached commited files and commit .gitignore file
+
+git rm --cached .DS_Store
+
+# -r for directories
+git rm -r --cached .idea
+git rm -r --cached out
+git rm -r --cached build
+
+# commit & push the changes
+git add .
+git commit -m "remove ignored files"
+git push
+
+
+
+
+
+Exercise 3: Feature branch 
+ 
+steps
+
+# create feature branch
+git checkout -b feature/changes
+
+# in build.gradle file, line 18, locate the "logstash-logback-encoder" library 
+# change version from '5.2' to '6.6'
+compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.6'
+
+# locate index.html file in src/main/webapp folder
+# on line 9, add the image url with 
+<img src="https://www.careeraddict.com/uploads/article/58721/illustration-group-people-team-meeting.jpg" width="" />
+
+# check and commit  changes
+git diff
+git add .
+git commit -m "Upgrade logback library and add image url"
+
+# pull remote changes and push your changes to remote
+git pull -r 
+git push
+
+
+
+
+
+Exercise 4: Bugfix branch 
+ 
+steps
+
+# create bugfix branch
+git checkout -b bugfix/changes
+
+# in Application.java file in src/main/java/com, line 22, fix the spelling error
+log.info("Java app started");
+
+# check and commit  changes
+git diff
+git add .
+git commit -m "Fix spelling error"
+
+# pull remote changes and push your changes to remote
+git pull -r 
+git push
+
+
+
+
+
+Exercise 5: Merge request 
+ 
+steps
+
+# merge feature branch into master. Alternatively do the merge from Gitlab UI
+git checkout master
+git merge feature/changes 
+
+# push the merge to remote master
+git push
+
+
+
+
+
+Exercise 6: Fix Merge conflict 
+ 
+steps
+
+# switch to bugfix branch
+git checkout bugfix/changes
+
+# in build.gradle file, line 18, locate the "logstash-logback-encoder" library 
+# change version from '5.2' to '6.2'
+compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.2'
+
+# commit change locally
+git add .
+git commit -m "upgrade logger library version"
+
+# bring bugfix branch uptodate with master branch. Alternatively do the merge from Gitlab UI
+git merge master
+
+# you will get a merge conflict here for build.gradle file, like 18, logback library version 
+
+# fix merge conflict and when done check the state
+git state
+
+# if all fixed, you can commit and push the merge into your bugfix branch
+git push
+
+
+
+
+
+
+Exercise 7: Revert commit 
+ 
+steps
+
+# on bugfix branch
+
+# locate index.html in src/main/webapp, line 11 & fix spelling error
+<li>Sarah - Full stack devloper</li>
+
+# commit change locally
+git add .
+git commit -m "Fix spelling error"
+
+# locate index.html in src/main/webapp, line 11 & set image url
+<img src="https://3kcz333h8wih3px3rh3vhfv3-wpengine.netdna-ssl.com/wp-content/uploads/2018/10/effective-meetings.jpg" width="" />
+
+# commit change locally
+git add .
+git commit -m "Set image url"
+
+# push both commits to remote
+git push
+
+# revert last commit and push the revertion into remote repo
+git revert HEAD
+git push
+
+
+
+
+
+
+Exercise 8: Reset commit 
+ 
+steps
+
+# on bugfix branch
+
+# locate index.html in src/main/webapp, line 15 & make change
+<li>Bruno - DevOps engineer</li>
+
+# commit change locally
+git add .
+git commit -m "Adjust employee role description"
+
+# reset the last local commit, meaning move to the previous commit
+git reset --hard HEAD~
+
+
+
+
+
+
+Exercise 9: Merge 
+ 
+steps
+
+# merge bugfix branch into master
+git checkout master
+git merge bugfix/changes
+
+
+
+
+
+
+Exercise 10: Delete Branches 
+ 
+steps
+
+# delete branches remotely via Gitlab UI
+
+# delete branches locally with CLI
+git branch -D bugfix/changes
+git branch -D feature/changes
+
+
+
