@@ -1,0 +1,47 @@
+Demo Project:
+Create server and deploy the application on DigitalOcean
+
+Technologies used:
+DigitalOcean, Linux, Java, Gradle
+
+Project Description:
+Setup and configure a server on DigitalOcean
+
+Create and configure a new Linux user on the Droplet
+
+(Security best practice)
+
+Deploy and run a Java Gradle application on Droplet
+
+First, we have to create a server on Digital Ocean.
+
+DigitalOcean - The developer cloud
+Businesses grow faster when developers can build on the simple, affordable cloud they love. DigitalOcean has the cloud…
+www.digitalocean.com
+
+once the server is created then Clone the java project into an IDE tool like IntelliJ.
+
+https://github.com/nanuchi/java-react-example
+
+Build the project by using gradle.
+
+gradlew build
+
+once the project is built we can see the jar file under the build/lib folder.
+
+
+first, we have to copy this jar file into the server. Then we can start the application by using the below command:-
+
+java -jar java-react-example.jar
+
+lization completed in 2393 ms
+2022–08–14 17:38:31.093 INFO 18905 — — [ main] o.s.b.a.w.s.WelcomePageHandlerMapping : Adding welcome page: class path resource [static/index.html]
+2022–08–14 17:38:31.320 INFO 18905 — — [ main] o.s.b.w.embedded.tomcat.TomcatWebServer : Tomcat started on port(s): 7071 (http) with context path ‘’
+2022–08–14 17:38:31.350 INFO 18905 — — [ main] com.coditorium.sandbox.Application : Started Application in 5.123 seconds (JVM running for 6.174)
+
+You can see the application started on port number 7071.
+
+Here, we can access our application by IP then followed by port number.
+
+
+This is just the flow of how we can build a java application using gradle.
