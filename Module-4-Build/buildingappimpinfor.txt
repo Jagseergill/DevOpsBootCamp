@@ -1,0 +1,17 @@
+How to build java app using gradle 
+gradlew build
+
+gradlew clean  - to clean the build
+
+
+Start application 
+java -jar <build_name>   under build/lib filder
+
+
+Below is the link to build by using maven
+
+https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
+
+
+Nodejs by using npm
+Python by using pip
