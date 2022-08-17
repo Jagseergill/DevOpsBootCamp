@@ -1,0 +1,32 @@
+WE have to add the below information into build.gradle file just below the 
+sourceCompatibility = 1.8
+
+##################
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        maven(MavenPublication){
+            artifact("build/libs/my-app-$version"+".jar"){
+                extension 'jar'
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name 'nexus'
+            url "Nexus repo URL"
+            allowInsecureProtocol = true
+            credentials{
+                username project.repoUser
+                password project.repoPassword
+            }
+        }
+    }
+}
+
+also we have to cretae a gradle.properties fiel to store our user information. 
+after that we can can build by using gradlew build --> then ---> gradlew publish --- to on Nexus repo manager
+
+
+
