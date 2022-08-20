@@ -1,0 +1,38 @@
+First of all we have to install the NExus server. 
+
+1. First, let's create a repo on NEXUS server type we can select hosted. 
+
+2. Then,let create a role for Docker repo.
+
+3. Once the roles are created then we can assign to user.
+
+
+4. In Realm tab on the nexus server, we have to add token for docker to push the images on NEXUS repo. 
+
+5. We havea repo which created on NEXUS however, this time we have to open additonal port any like 8083 / also add this port on firwall to allow trafic on this specific port. 
+
+6. This the steps which we have to follow on nexus servers. Nowe lets bakc to local docker server. 
+
+7. Bydeafult docker can't push images on http traffic, so we have to add file under /etc/docket/deamon.json
+
+7. ADD this lines in the file 
+{
+  "insecure-registries" : ["ip-addr:8083"]
+}
+
+8. Once this added then we have to restart the docker deamon. 
+
+9. then we can login on our system by using --> docker login ip-add:port-number 
+
+10. Enter the credential which we have on NEXUS server. 
+
+11.some sueful cmd are below
+
+sudo docker build -t my-image:1.0 .
+
+sudo docker tag my-image:1.0 165.22.229.234:8083/my-image:1.0
+
+sudo docker push 165.22.229.234:8083/my-image:1.0
+
+
+

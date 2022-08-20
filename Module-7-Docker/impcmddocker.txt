@@ -1,0 +1,10 @@
+sudo docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=12345 --name mongodb --net mongo-network mongo
+
+sudo docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=12345 --net mongo-network --name mongo-express -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express
+
+
+sudo docker network create mongo-network
+sudo docker network inspect mongo-network
+
+sudo docker logs <container-name>
+
