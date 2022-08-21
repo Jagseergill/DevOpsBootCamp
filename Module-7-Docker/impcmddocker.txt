@@ -8,3 +8,6 @@ sudo docker network inspect mongo-network
 
 sudo docker logs <container-name>
 
+
+sudo docker compose -f docker-compose-nexus.yaml up -d
+
