@@ -1,0 +1,42 @@
+version: '3.1'
+services:
+  my-java-app:
+    image: java-mysql-app:1.0 # specify the full image name with repository name
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PWD=${DB_PWD}
+      - DB_SERVER=${DB_SERVER}
+      - DB_NAME=${DB_NAME}
+    ports:
+    - 8080:8080
+    container_name: my-java-app
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PWD}
+    volumes:
+    - mysql-data:/var/lib/mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8083:80
+    environment:
+      - PMA_HOST=${PMA_HOST}
+      - PMA_PORT=${PMA_PORT}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+volumes:
+  mysql-data:
+    driver: local
+

@@ -11,3 +11,20 @@ sudo docker logs <container-name>
 
 sudo docker compose -f docker-compose-nexus.yaml up -d
 
+
+
+# set all needed environment variables
+export DB_USER=admin
+export DB_PWD=adminpass
+export DB_SERVER=mysql
+export DB_NAME=team-member-projects
+
+export MYSQL_ROOT_PASSWORD=rootpass
+
+export PMA_HOST=mysql
+export PMA_PORT=3306
+
+# start all 3 containers 
+docker-compose -f docker-compose.yaml up   
+
+
