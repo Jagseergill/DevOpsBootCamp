@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+    tools{
+        nodejs 'node'
+    }
+
+    stages {
+        stage('increment version') {
+            steps {
+                script {
+                    def version = sh (returnStdout: true, script: "grep 'version' package.json | cut -d '\"' -f4 | tr '\\n' '\\0'")
+                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+
+                }
+            }
+        }
+        stage("Run Tests") {
+            steps {
+                script {
+                      dir("app"){
+                        sh "npm install"
+                        sh "npm run test"
+                      }
+                }
+            }
+        }
+        stage("build Image on Docker Hub") {
+            steps {
+                script{
+                    echo "Building the docker image..."
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable:'PASS', usernameVariable:'USER')]){
+                    sh 'docker build -t jageersingh/my-repo:Node-JS-2.0 .'
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh 'docker push jageersingh/my-repo:Node-JS-2.0'
+                    }
+                }
+            }
+        }
+        stage("Deploy") {
+            steps {
+                script {
+                      echo "Deploying the application..."
+                }
+            }
+        }
+    }   
+}
