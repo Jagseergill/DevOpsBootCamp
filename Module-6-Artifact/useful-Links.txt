@@ -1,0 +1,7 @@
+● Nexus Download URLs: https://help.sonatype.com/repomanager3/download
+
+Nexus Repository Types:
+https://help.sonatype.com/repomanager2/configuration/managing-repositories
+
+● API Reference:
+https://help.sonatype.com/repomanager3/integrations/rest-and-integration-api

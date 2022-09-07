@@ -1,0 +1,16 @@
+● Jenkins Docker Image: https://hub.docker.com/r/jenkins/jenkins
+
+● Node Installation for Linux distributions: https://github.com/nodesource/distributions
+● Jenkins Plugins: https://plugins.jenkins.io/
+
+● List available environment variables: <your-ip-of-jenkins>:8080//env-vars.html
+● Pipeline Syntax: https://www.jenkins.io/doc/book/pipeline/syntax/
+● Jenkinsfile & Groovy example:
+https://gitlab.com/nanuchi/java-maven-app/-/tree/jenkins-jobs/Jenkinsfile-syntax
+
+● Maven Build-Helper Plugin:
+https://www.mojohaus.org/build-helper-maven-plugin/parse-version-mojo.ht
+ml
+● Java-maven-app:
+https://gitlab.com/nanuchi/java-maven-app/-/tree/jenkins-jobs/Jenkinsfile-versi
+on-increment

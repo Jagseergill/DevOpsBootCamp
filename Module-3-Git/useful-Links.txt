@@ -1,0 +1,4 @@
+● Git GUI - Installation Guides: https://www.git-scm.com/downloads/guis
+● Install Git Command Line: https://git-scm.com/downloads
+● Steps to create SSH Key Pair:
+https://docs.gitlab.com/ee/ssh/#common-steps-for-generating-an-ssh-key-pair

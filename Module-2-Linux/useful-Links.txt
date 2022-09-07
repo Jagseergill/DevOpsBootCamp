@@ -1,0 +1,10 @@
+● Download VirtualBox: https://www.virtualbox.org/wiki/Downloads
+● Download Ubuntu: https://ubuntu.com/download/desktop
+
+● Cheat Sheet:
+https://cheatography.com/davechild/cheat-sheets/linux-command-line/
+● Cheat Sheet: https://www.guru99.com/linux-commands-cheat-sheet.html
+
+● Snap Package Manager: https://snapcraft.io/
+
+- Cheat Sheet: https://vim.rtorr.com/

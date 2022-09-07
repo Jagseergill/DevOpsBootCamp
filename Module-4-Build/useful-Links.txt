@@ -1,0 +1,10 @@
+● Maven: https://maven.apache.org/install.html
+● Node.js: https://nodejs.org/en/download/ - npm is distributed with Node.js
+
+● Java on Windows:
+https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html
+
+● Homebrew Package Manager: https://brew.sh/
+● Java on Mac/Linux: Install using your OS package manager (e.g. brew)
+● Symbolic Link Cmd I use in the demo:
+https://mkyong.com/java/how-to-install-java-on-mac-osx/

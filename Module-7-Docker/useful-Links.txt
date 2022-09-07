@@ -1,0 +1,34 @@
+● Postgres Docker Images: https://hub.docker.com/_/postgres
+
+● Docker Installation Guides for different OS:
+https://docs.docker.com/get-docker/
+
+● Redis Docker Images: https://hub.docker.com/_/redis
+
+● MongoDB Docker Image: https://hub.docker.com/_/mongo
+● Mongo Express Docker Image: https://hub.docker.com/_/mongo-express
+● Demo project: https://gitlab.com/nanuchi/developing-with-docker
+
+● Docker Compose Installation Guides for different OS:
+https://docs.docker.com/compose/install/
+
+● Amazon ECR Docker Registry: https://aws.amazon.com/ecr/
+● Installing AWS Cli Linux:
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+● Installing AWS CLI on MacOS:
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-macOS.html
+● Installing AWS CLI on Windows:
+https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html
+● Configuring the AWS CLI:
+https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html
+
+● Nexus Docker Image: https://hub.docker.com/r/sonatype/nexus3
+
+● Best practices for writing Dockerfiles:
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+● Docker development best practices:
+https://docs.docker.com/develop/dev-best-practices/
+● Tips for Caching, reducing Image size, maintainability, reproducibility:
+https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/
+● Tip: Enforce Dockerfile best practices automatically by using a static code
+analysis tool (e.g. https://github.com/hadolint/hadolint )
