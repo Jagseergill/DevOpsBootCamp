@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    tools{
+        maven 'Maven'
+    }
+
+    stages {
+        stage("increment version") {
+            steps {
+                script {
+                      echo "Incrementing app version..."
+                      sh 'mvn build-helper:parse-version versions:set \
+                        -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
+                        versions:commit'
+                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
+                    def version = matcher[0][1]
+                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+
+                }
+            }
+        }
+        stage("build Jar") {
+            steps {
+                script {
+                      echo "Building the application..."
+                      sh 'mvn package'
+                }
+            }
+        }
+        stage("build Image on Docker Hub") {
+            steps {
+                script{
+                    echo "Building the docker image..."
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable:'PASS', usernameVariable:'USER')]){
+                    sh "docker build -t jageersingh/my-repo:${IMAGE_NAME} ."
+                    sh "echo $PASS | docker login -u $USER --password-stdin"
+                    sh "docker push jageersingh/my-repo:${IMAGE_NAME}"
+                    }
+                }
+            }
+        }
+        stage("Deploy") {
+            steps {
+                script {
+                      def dockerCmd = 'docker run -p 3000:3000 -d jageersingh/my-repo:NodeJS-32'
+                      def dockerComposeCMD = "docker-compose -f docker-compose.yaml up -d "
+                      def shellCmd = "bash ./server-cmds.sh ${IMAGE_NAME}"
+                      sshagent(['EC2-SERVER']) {
+                        sh "scp -o StrictHostKeyChecking=no server-cmds.sh ec2-user@54.159.1.1:/home/ec2-user"
+                        sh "scp docker-compose.yaml ec2-user@54.159.1.1:/home/ec2-user"
+                        sh "ssh -o StrictHostKeyChecking=no ec2-user@54.159.1.1 ${shellCmd}"
+                    }
+                }
+            }
+        }
+    }   
+}
+
