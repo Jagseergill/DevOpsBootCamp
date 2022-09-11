@@ -1,0 +1,9 @@
+terraform --version
+terraform init
+tree -a 
+terraform fmt -diff
+terraform plan 
+terraform apply
+terraform output
+terraform state list
+terraform console
