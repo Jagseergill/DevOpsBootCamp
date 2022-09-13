@@ -1,0 +1,92 @@
+● Installation Guide:
+https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+
+Modules used:
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.ht
+ml
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/service_modul
+e.html
+- Automatically executed by Ansible:
+https://docs.ansible.com/ansible/latest/collections/ansible/builtin/gather_facts_
+module.html
+
+Modules Index for Ansible Version 2.9
+https://docs.ansible.com/ansible/2.9/modules/modules_by_category.html
+
+Useful Links:
+- Collection Index:
+https://docs.ansible.com/ansible/latest/user_guide/collections_using.html
+- Ansible Collections - Version 2.10 Changes:
+https://github.com/ansible-collections/overview
+- Ansible Galaxy: https://galaxy.ansible.com/
+- Developing own Collections:
+https://docs.ansible.com/ansible/latest/dev_guide/developing_collections.html
+
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/copy_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/unarchive_module.html
+- https://docs.ansible.com/ansible/latest/collections/community/general/npm_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/command_module.html
+- https://docs.ansible.com/ansible/latest/user_guide/playbooks_async.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
+- https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/get_url_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/find_module.html
+- https://docs.ansible.com/ansible/2.10/collections/ansible/builtin/stat_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/group_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/blockinfile_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/lineinfile_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pause_module.html
+● Git Repo from Terraform Module:
+https://gitlab.com/nanuchi/terraform-learn/-/tree/feature/deploy-to-ec2
+● Install docker-compose:
+https://gitlab.com/nanuchi/java-maven-app/-/blob/feature/sshagent-terraform/terraform/e
+ntry-script.sh
+● Jinja2 Templating Language: https://palletsprojects.com/p/jinja/
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/yum_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pipe_lookup.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/meta_module.html
+
+- https://docs.ansible.com/ansible/latest/collections/community/docker/docker_image_mod
+ule.html
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/pip_module.html
+- https://docs.ansible.com/ansible/latest/collections/community/docker/docker_login_modul
+e.html
+- https://docs.ansible.com/ansible/latest/collections/community/docker/docker_compose_m
+odule.html
+
+Useful Links:
+● Ansible part of the Terraform project:
+https://gitlab.com/nanuchi/terraform-learn/-/tree/feature/ansible
+● TF Provisioner:
+https://www.terraform.io/docs/language/resources/provisioners/syntax.html
+● TF Null Resource:
+https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource
+
+New Modules used:
+- https://docs.ansible.com/ansible/latest/collections/ansible/builtin/wait_for_module.html
+Useful Links:
+● Working with Dynamic Inventory:
+https://docs.ansible.com/ansible/latest/user_guide/intro_dynamic_inventory.html
+● Git Repo from Terraform Module:
+https://gitlab.com/nanuchi/terraform-learn/-/tree/feature/deploy-to-ec2
+● Inventory Plugins:
+https://docs.ansible.com/ansible/latest/plugins/inventory.html#inventory-plugins
+● EC2 Inventory Source:
+https://docs.ansible.com/ansible/latest/collections/amazon/aws/aws_ec2_inventory.html
+● Ansible-inventory command:
+https://docs.ansible.com/ansible/latest/cli/ansible-inventory.html
+Useful Links:
+● TF script for EKS creation: https://gitlab.com/nanuchi/terraform-learn/-/tree/feature/eks
+New Modules used:
+- https://docs.ansible.com/ansible/latest/collections/community/kubernetes/k8s_module.ht
+ml
+● Official Doc:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
+● Variable Precedence:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#vari
+able-precedence-where-should-i-put-a-variable
+

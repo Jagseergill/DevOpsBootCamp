@@ -1,0 +1,49 @@
+---
+- name : Install node and NPM
+  hosts: webserver
+  tasks: 
+  - name: update apt repo and cache
+    apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+  - name : Install nodeJS and NPM
+    apt:
+      pkg:
+        - nodejs
+        - npm
+- name: Add the new user
+  hosts: webserver
+  tasks:
+   - name: create linux user
+     user:
+      name: james
+      comment: James Admin
+      shell: /bin/bash
+      groups: admin
+
+- name: Deploy Node JS App
+  hosts: webserver
+  become: True
+  become_user: james
+  tasks:
+   - name: copy nodejs folder to a server
+     copy: 
+       src: /root/ansible/simple-nodejs/nodejs-app-1.0.0.tgz
+       dest: /home/james/app-1.0.0.tgz
+   - name : Unpacking the nodejs file
+     unarchive:
+        src: /home/james/app-1.0.0.tgz
+        dest: /home/james
+        remote_src: yes
+   - name: Install dependencies
+     npm:
+      path: /home/james/package
+   - name: Start the application
+     command: 
+       chdir: /home/james/package/app
+       cmd: node server
+     async: 1000
+     poll: 0
+   - name: Ensure App is running
+     shell: ps aux | grep node
+     register: app_status
+   - debug: msg = {{app_status.stdout_lines}}
+
