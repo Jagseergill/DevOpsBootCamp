@@ -1,0 +1,5 @@
+Run playbook with varibale and host file
+ansible-playbook -i hosts -e "linux_user=jamie" varibale-playbook.yaml
+
+Run Playbook
+ansible-playbook -i hosts node-deploy.yaml
