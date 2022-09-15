@@ -3,3 +3,19 @@ ansible-playbook -i hosts -e "linux_user=jamie" varibale-playbook.yaml
 
 Run Playbook
 ansible-playbook -i hosts node-deploy.yaml
+
+Run a single module
+ansible -m ping all   -m = module then module name
+
+Conditional - WHEN
+
+when: ansible_os_family == "Debian" or ansible_os_family == "Redhat"
+
+
+Strategu types:-
+1. Free
+2. Linea
+3. Batch
+
+
+By default forks value is = 5 that means you can run 5 servers at a time
