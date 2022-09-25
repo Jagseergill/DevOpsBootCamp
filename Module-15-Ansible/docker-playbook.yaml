@@ -1,0 +1,45 @@
+---
+- name : Install Docker
+  hosts: webserver
+  tasks: 
+   - name: update apt repo and cache
+     apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+   - name: install docker 
+     apt: name=docker.io
+   - name: install pip
+     apt: name=python-pip
+- name: Install docker compose
+  hosts: webserver
+  tasks: 
+   - name: Install docker compose
+     get_url:
+       url: https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-{{lookup('pipe','uname -m')}}
+       dest: /usr/local/bin/docker-compose
+       mode: +x
+- name: Start docker
+  hosts: webserver
+  tasks: 
+   - name: Start Docker deamon
+     systemd: 
+       name: docker
+       state: started
+   - name: Install docker python module
+     pip:
+       name: docker
+- name: Add Ec2 user to a docker group
+  hosts: webserver
+  tasks: 
+   - name: Add EC2-user to docker group
+     user: 
+       name: ec2-user
+       groups: docker
+       append: yes
+   - name: reconnect to server session
+     meta: reset_connection
+- name: Test Docker pull
+  hosts: webserver
+  tasks: 
+   - name: pull redis
+     docker_image:
+       name: redis
+       source: pull
