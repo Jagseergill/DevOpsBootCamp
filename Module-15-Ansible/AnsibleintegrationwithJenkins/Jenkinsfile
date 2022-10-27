@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+    environment {
+        ANSIBLE_SERVER = "2.123.34.28"
+    }
+    stages {
+        stage("copy ansible folder and ec2 access key to ansible-server") {
+            steps {
+                script {
+                    sshagent(['ansible-server-key']) {
+                        echo "copying ansible folder to ansible server"
+                        
+                        sh "scp -o StrictHostKeyChecking=no ansible/* root@${ANSIBLE_SERVER}:/root"    
+
+                        echo "copying ssh keys for ec2 instances"
+                        withCredentials([sshUserPrivateKey(credentialsId: 'ec2-server-key', keyFileVariable: 'keyfile', usernameVariable: 'user')]) {
+                            sh 'scp $keyfile root@$ANSIBLE_SERVER:/root/ssh-key.pem'
+                        }
+                    }                               
+                }
+            }
+        }
+        stage("execute ansible playbook from the ansible-server") {
+            environment {
+                AWS_ACCESS_KEY_ID = credentials('aws_access_key_id')
+                AWS_SECRET_ACCESS_KEY = credentials('aws_secret_access_key')
+            }
+            steps {
+                script {
+                    echo "executing ansible-playbook"
+                    
+                    def remote = [:]
+                    remote.name = "ansible-server"
+                    remote.host = ANSIBLE_SERVER
+                    remote.allowAnyHosts = true
+                    
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ansible-server-key', keyFileVariable: 'keyfile', usernameVariable: 'user')]) {
+                        remote.identityFile = keyfile
+                        remote.user = user
+
+                        sshCommand remote: remote, command: "ls -l"
+                        
+                        // set AWS credentials
+                        sshScript remote: remote, script: "ansible/prepare-server.sh"
+                        
+                        sshCommand remote: remote, command: "export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}; export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}; ansible-playbook docker-and-compose.yaml"
+                    }
+                }
+            }
+        }
+    }   
+}
+
